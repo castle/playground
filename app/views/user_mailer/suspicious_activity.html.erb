@@ -1,0 +1,15 @@
+<p>
+  Hi <%= @user.email %>,
+  we saw the following suspicious activity:
+</p>
+<ul>
+  <% @risk_reasons.each do |risk_reason| %>
+    <li>
+      <%= risk_reason[:title] %>: <%= risk_reason[:description] %>
+    </li>
+  <% end %>
+</ul>
+<b>Do you recognize the above activity?</b> 
+<p> If you&#39;re not sure this was you, a malicious user might have your password. Select one of the options below:</p>
+<a href="<%= @approve_url %>"> Yes, this is me </a></br>
+<a href="<%= @deny_url %>"> No, this wasn&#39;t me </a>

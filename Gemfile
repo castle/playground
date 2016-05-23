@@ -13,6 +13,7 @@ group :development do
 end
 
 gem 'rails', '4.2.0'
+gem 'jwt', '~> 1.5.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'clearance', '~> 1.5.0'
 gem 'jquery-rails', '~> 3.1.2'

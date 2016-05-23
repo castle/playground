@@ -2,3 +2,9 @@
 *.cache
 
 *.pid
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore default databases.
+/db/*.sqlite3

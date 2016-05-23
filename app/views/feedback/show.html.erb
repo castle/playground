@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <h2>Hi <%= @user.email %></h2>
+  </div>
+  <div class="col-sm-offset-2 col-sm-4">
+    <% if @status == 'deny' %>
+      <p>
+        Oh no. Your account was probably hijacked. As a precaution we locked your account, which means you are going to be locked out from all of your devices.
+        We've sent you an email with instructions on how to unlock your account again.
+      </p>
+    <% elsif @status == 'approve' %>
+      <p>
+        We approved your request.
+        Thanks for providing us feedback!
+      </p>
+    <% else %>
+      <p>Something went wrong</p>
+    <% end %>
+  </div>
+</div>
