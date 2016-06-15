@@ -5,7 +5,6 @@ class ChallengeController < ApplicationController
     authentication = Authentication.find_by(
       castle_authentication_id: castle_authentication_id,
     )
-
     if authentication.challenge.resolve!(challenge_token)
       redirect_to account_path
     end

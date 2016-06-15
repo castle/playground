@@ -7,7 +7,6 @@
 one: {
   user_id: 1,
   castle_authentication_id: 'SAMPLE_ID',
-  session_id: '12234'
 }
 # # column: value
 # #

@@ -1,25 +1,22 @@
 class AuthenticationService
 
-  def self.resolve(castle, user, session_id)
+  def self.resolve(castle, user, castle_authentication_id)
     authentication = Authentication.find_by(
-      session_id: session_id,
-      user_id: user.id
+      castle_authentication_id: castle_authentication_id
     )
     authentication = AuthenticationService.create_from_castle(
       castle,
-      user,
-      session_id
+      user
     ) unless authentication
     
     authentication
   end
 
-  def self.create_from_castle(castle, user, session_id)
+  def self.create_from_castle(castle, user)
     castle_authentication = castle.authentications.create(user_id: user.id)
     authentication = Authentication.create(
       user: user,
-      castle_authentication_id: castle_authentication.id,
-      session_id: session_id
+      castle_authentication_id: castle_authentication.id
     )
     
     if castle_authentication.risk > 0.9
