@@ -1,17 +1,5 @@
 class AccountsController < ApplicationController
-  before_filter :authorize
-
-  def authorize
-    super
-    authentication = AuthenticationService.resolve(
-      castle,
-      current_user,
-      session.id
-    )
-    redirect_to active_challenge_path if authentication.status.challenge?
-    redirect_to active_lock_path if authentication.status.lock?
-
-  end
+  before_filter :require_login
 
   def update
     if current_user.update_attributes params.require(:user).permit(:description)

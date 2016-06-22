@@ -1,10 +1,9 @@
 class UserMailer < ApplicationMailer
   layout 'mail'
 
-  def challenge(user, challenge)
+  def challenge(user, challenge_token)
     @user = user
-    @challenge_token = challenge.token
-    @authentication_id = challenge.authentication.castle_authentication_id
+    @challenge_token = challenge_token
     mail(to: user.email, subject: 'Is this you?')
   end
 end

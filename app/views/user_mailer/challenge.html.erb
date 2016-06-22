@@ -2,4 +2,4 @@
   Hi <%= @user.email %>,
   please click the link to continue your session:
 </p>
- <a href='<%= challenge_url(challenge_token: @challenge_token, authentication_id: @authentication_id)%>' >click</a>
+ <a href='<%= challenge_url(token: @challenge_token)%>' >click</a>

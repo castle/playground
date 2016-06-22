@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  has_many :authentications
-
   def lock!
     unless lock
       update_attribute(:lock, true)
@@ -15,7 +13,9 @@ class User < ActiveRecord::Base
     update_attribute(:lock, false)
   end
 
-  def notify_user_with_challenge(challenge)
-    UserMailer.challenge(self, challenge).deliver_later
+  def challenge(castle_authentication)
+    # TODO: Replace with real token
+    challenge_token = castle_authentication.id
+    UserMailer.challenge(self, challenge_token).deliver_later
   end
 end

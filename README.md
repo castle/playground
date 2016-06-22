@@ -19,7 +19,7 @@
    For example:
 
    ```
-   CASTLE_APP_ID=100000000000000 CASTLE_API_SECRET=secret rails s
+   CASTLE_APP_ID=100000000000000 CASTLE_API_SECRET=secret rails s -p 4000
    ```
 
 1. [Contact us](mailto:team@castle.io) if you have any questions.
