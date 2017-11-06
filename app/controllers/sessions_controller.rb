@@ -5,23 +5,26 @@ class SessionsController < Clearance::SessionsController
     super
     if @user
       castle.track(
-        name: '$login.succeeded',
-        user_id: @user.id)
+        event: '$login.succeeded',
+        user_id: @user.id
+      )
     else
       email = params['session']['email']
-      user_id = User.find_by_email(email).id rescue nil
+      user = User.find_by_email(email)
 
       castle.track(
-        name: '$login.failed',
-        user_id: user_id,
-        details: { '$login' => email })
+        event: '$login.failed',
+        user_id: user&.id,
+        details: { email: email }
+      )
     end
   end
 
   def destroy
     castle.track(
       user_id: current_user.id,
-      name: '$logout.succeeded')
+      event: '$logout.succeeded'
+    )
     super
   end
 end
