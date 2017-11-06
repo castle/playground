@@ -14,7 +14,7 @@ class SessionsController < Clearance::SessionsController
 
       castle.track(
         event: '$login.failed',
-        user_id: user&.id,
+        user_id: user && user.id,
         details: { email: email }
       )
     end
