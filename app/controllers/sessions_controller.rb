@@ -1,3 +1,5 @@
+require 'castle/support/rails'
+
 class SessionsController < Clearance::SessionsController
   before_filter :authorize, only: [:destroy]
 

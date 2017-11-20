@@ -1,3 +1,5 @@
+require 'castle/support/rails'
+
 class UsersController < Clearance::UsersController
   def create
     super
