@@ -14,7 +14,7 @@ class SessionsController < Clearance::SessionsController
   def create
     super
     if @user
-      castle.track(
+      castle.authenticate(
         event: '$login.succeeded',
         user_id: @user.id
       )
