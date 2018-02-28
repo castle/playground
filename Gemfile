@@ -7,8 +7,7 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'pry'
-  gem 'pry-byebug'
+  gem 'byebug'
   gem 'spring'
 end
 
