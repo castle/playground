@@ -20,4 +20,4 @@ gem 'jquery-rails', '~> 3.1.2'
 gem 'dotenv-rails', '~> 0.11.1'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'castle-rb'
+gem 'castle-middleware', github: 'castle/castle-ruby-middleware'

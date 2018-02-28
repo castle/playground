@@ -1,0 +1,19 @@
+events:
+  $login.failed:
+    path: /session
+    method: POST
+    status: 401,
+    properties:
+      email: 'session.email' # Send user email extracted from params['session']['email']
+  $login.succeeded: # Remember to register the current user, see below
+    path: /session
+    method: POST
+    status: 302
+  $logout.succeeded:
+    path: /sign_out
+    method: DELETE
+    status: 302
+  $registration.succeeded:
+    path: /users
+    method: POST
+    status: 302
