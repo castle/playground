@@ -1,6 +1,6 @@
+.bundle
 *.log
 *.cache
-
 *.pid
-
 *.sqlite3
+vendor/bundle
