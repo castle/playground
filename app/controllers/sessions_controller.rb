@@ -1,40 +1,38 @@
-require 'castle/support/rails'
-
-module Castle
-  class HeaderFormatter
-    def call(header)
-      header.to_s.gsub(/^HTTP(?:_|-)/i, '').split(/_|-/).map(&:capitalize).join('-')
-    end
-  end
-end
-
 class SessionsController < Clearance::SessionsController
   before_filter :authorize, only: [:destroy]
+  before_action do
+    if current_user
+      env['castle'].identify(
+        current_user.id,
+        {
+          created_at: current_user.created_at,
+          email: current_user.email
+        }
+      )
+    end
+  end
 
   def create
     super
     if @user
-      castle.authenticate(
-        event: '$login.succeeded',
-        user_id: @user.id
+      env['castle'].identify(
+        @user.id,
+        {
+          created_at: @user.created_at,
+          email: @user.email
+        }
       )
     else
       email = params['session']['email']
       user = User.find_by_email(email)
 
-      castle.track(
-        event: '$login.failed',
-        user_id: user && user.id,
-        details: { email: email }
+      env['castle'].identify(
+        user.id,
+        {
+          created_at: user.created_at,
+          email: user.email
+        }
       )
     end
-  end
-
-  def destroy
-    castle.track(
-      user_id: current_user.id,
-      event: '$logout.succeeded'
-    )
-    super
   end
 end

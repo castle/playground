@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/castle/castle-ruby-middleware.git
+  revision: 10dab6ba7ad211cb9f71b11eeb42d32ede36cfef
+  specs:
+    castle-middleware (0.0.1)
+      castle-rb (< 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -135,7 +142,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  castle-rb
+  castle-middleware!
   clearance (~> 1.5.0)
   dotenv-rails (~> 0.11.1)
   jquery-rails (~> 3.1.2)
