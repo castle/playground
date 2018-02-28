@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor', '0.0.3'
+  gem 'rails_12factor'
 end
 
 group :development do
@@ -11,7 +11,7 @@ group :development do
   gem 'spring'
 end
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.10'
 gem 'uglifier', '>= 1.3.0'
 gem 'clearance', '~> 1.5.0'
 gem 'jquery-rails', '~> 3.1.2'
