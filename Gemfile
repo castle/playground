@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 group :production do
-  gem 'pg'
+  # https://github.com/rails/rails/issues/31669
+  # https://bitbucket.org/ged/ruby-pg/issues/270/pg-100-x64-mingw32-rails-server-not-start
+  gem 'pg', '0.21.0'
   gem 'rails_12factor'
 end
 
